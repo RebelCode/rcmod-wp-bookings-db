@@ -1,6 +1,6 @@
 <?php
 
-namespace RebelCode\Bookings\Storage\Module\Migration;
+namespace RebelCode\Bookings\WordPress\Storage\Migration;
 
 use Dhii\Event\EventFactoryInterface;
 use Psr\EventManager\EventManagerInterface;

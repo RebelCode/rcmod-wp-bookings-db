@@ -34,8 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "RebelCode\\Bookings\\WordPress\\Storage\\": "src",
-            "RebelCode\\Migration\\Sql\\": "src/Migration"
+            "RebelCode\\Bookings\\WordPress\\Storage\\": "src"
         }
     },
     "scripts": {
