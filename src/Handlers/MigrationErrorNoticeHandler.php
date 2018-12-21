@@ -29,8 +29,8 @@ class MigrationErrorNoticeHandler implements InvocableInterface
      */
     public function __construct(EventManagerInterface $eventManager, EventFactoryInterface $eventFactory)
     {
-        $this->_setEventManager($eventManager);
-        $this->_setEventFactory($eventFactory);
+        $this->setEventManager($eventManager);
+        $this->setEventFactory($eventFactory);
     }
 
     /**
@@ -58,7 +58,7 @@ class MigrationErrorNoticeHandler implements InvocableInterface
         $exceptionMsg = $exception->getMessage();
         $noticeMsg = $this->__('EDD Bookings failed to migrate to database v%d. Reason: %s', [$version, $exceptionMsg]);
 
-        $this->_attach('admin_notices', function () use ($noticeMsg) {
+        $this->attach('admin_notices', function () use ($noticeMsg) {
             printf('<div class="notice notice-error is-dismissible"><p>%s</p>', $noticeMsg);
         });
     }
