@@ -62,8 +62,8 @@ class WpdbEventMigrator extends AbstractDistributedMigrator
         $eventPrefix = ''
     ) {
         $this->setMigrationLogTable($logTable);
-        $this->_setEventManager($eventManager);
-        $this->_setEventFactory($eventFactory);
+        $this->setEventManager($eventManager);
+        $this->setEventFactory($eventFactory);
 
         $this->wpdb = $wpdb;
         $this->eventPrefix = $eventPrefix;
@@ -82,13 +82,13 @@ class WpdbEventMigrator extends AbstractDistributedMigrator
             'current' => $currVer,
         ];
 
-        $this->_trigger($this->eventPrefix . 'before_migration', $eventData);
-        $this->_trigger($this->eventPrefix . 'before_migration_' . $currVer, $eventData);
+        $this->trigger($this->eventPrefix . 'before_migration', $eventData);
+        $this->trigger($this->eventPrefix . 'before_migration_' . $currVer, $eventData);
 
         parent::migrate($targetVer);
 
-        $this->_trigger($this->eventPrefix . 'after_migration_' . $targetVer, $eventData);
-        $this->_trigger($this->eventPrefix . 'after_migration_', $eventData);
+        $this->trigger($this->eventPrefix . 'after_migration_' . $targetVer, $eventData);
+        $this->trigger($this->eventPrefix . 'after_migration_', $eventData);
     }
 
     /**
@@ -98,7 +98,7 @@ class WpdbEventMigrator extends AbstractDistributedMigrator
      */
     protected function getLocalMigrations($version)
     {
-        return $this->_filter($this->eventPrefix, 'migrations', []);
+        return $this->filter($this->eventPrefix, 'migrations', []);
     }
 
     /**
@@ -108,7 +108,7 @@ class WpdbEventMigrator extends AbstractDistributedMigrator
      */
     protected function onMigrationsError($version, $direction, $migrations, RuntimeException $exception)
     {
-        $this->_trigger($this->eventPrefix . 'on_migration_error', [
+        $this->trigger($this->eventPrefix . 'on_migration_error', [
             'version'    => $version,
             'direction'  => $direction,
             'migrations' => $migrations,
