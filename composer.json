@@ -1,7 +1,7 @@
 {
     "name": "rebelcode/rcmod-wp-bookings-db",
     "description": "A module that provides functionality for a RebelCode booking system.",
-    "type": "library",
+    "type": "rc-module",
     "license": "GPL-3.0",
     "authors": [
         {
