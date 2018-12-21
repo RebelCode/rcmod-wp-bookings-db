@@ -5,13 +5,13 @@ return [
         'table_prefix' => '${wpdb_prefix}',
         'migrations'   => [
             'target_version' => 3,
-            'log_table'      => '${rc_bookings_db/table_prefix}migrations',
-            'event_prefix'   => 'rc_bookings',
+            'log_table'      => '${wp_bookings_db/table_prefix}migrations',
+            'event_prefix'   => 'wp_bookings_',
         ],
         'cqrs'         => [
             // Bookings CQRS RM config
             'bookings'          => [
-                'table'            => '${rc_bookings_db/table_prefix}bookings',
+                'table'            => '${wp_bookings_db/table_prefix}bookings',
                 'field_column_map' => $bookingsFieldColumnMap = [
                     'id'          => ['booking', 'id'],
                     'start'       => ['booking', 'start'],
@@ -59,7 +59,7 @@ return [
 
             // Resources CQRS RM config
             'resources'         => [
-                'table'            => '${rc_bookings_db/table_prefix}resources',
+                'table'            => '${wp_bookings_db/table_prefix}resources',
                 'field_column_map' => $resourcesFcMap = [
                     'id'       => 'id',
                     'type'     => 'type',
@@ -91,7 +91,7 @@ return [
 
             // Booking-Resources CQRS RM config
             'booking_resources' => [
-                'table'            => '${rc_bookings_db/table_prefix}booking_resources',
+                'table'            => '${wp_bookings_db/table_prefix}booking_resources',
                 'field_column_map' => $bookingResourcesFcMap = [
                     'id'          => 'id',
                     'booking_id'  => 'booking_id',
@@ -122,7 +122,7 @@ return [
             // Sessions CQRS RM config
             'sessions'          => [
                 [
-                    'table'            => '${rc_bookings_db/table_prefix}sessions',
+                    'table'            => '${wp_bookings_db/table_prefix}sessions',
                     'field_column_map' => $sessionsFieldColumnMap = [
                         'id'           => 'id',
                         'start'        => 'start',
@@ -153,7 +153,7 @@ return [
 
             // Unbooked sessions CQRS RM config
             'unbooked_sessions' => [
-                'table'            => '${rc_bookings_db/table_prefix}sessions',
+                'table'            => '${wp_bookings_db/table_prefix}sessions',
                 'field_column_map' => $sessionsFieldColumnMap = [
                     'id'             => ['session', 'id'],
                     'start'          => ['session', 'start'],
@@ -175,7 +175,7 @@ return [
 
             // Session rules CQRS RM config
             'session_rules'     => [
-                'table'            => '${rc_bookings_db/table_prefix}session_rules',
+                'table'            => '${wp_bookings_db/table_prefix}session_rules',
                 'field_column_map' => $sessionRulesFieldColumnMap = [
                     'id'                  => 'id',
                     'resource_id'         => 'resource_id',
